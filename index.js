@@ -14,17 +14,20 @@
 
 const express = require('express');
 const myData = require('./data');
-console.log('my data is', myData);
 const app = express();
 const port = 3000;
 
 app.get('/', (req, res) => {
     
-    res.send(mydata[0]);
+    res.send('Welcome to our schedule website');
 
 });
 
 app.get('/users', (req,res) => {
+    res.send('there are no users');
+});
+
+app.get('/schedules', (req,res) => {
     res.send('there are no users');
 });
 
