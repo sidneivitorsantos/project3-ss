@@ -24,14 +24,12 @@ app.get('/', (req, res) => {
 });
 
 app.get('/users', (req,res) => {
-    res.send('there are no users');
+    res.send('data.users');
 });
 
 app.get('/schedules', (req,res) => {
-    res.send('there are no users');
+    res.send('data.schedules');
 });
 
-app.listen(port, () => {
-    console.log(`example app listening at http://localhost:${port}`);
-});
+const server=app.listen(3000, function() {} );
 
