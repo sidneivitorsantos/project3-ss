@@ -13,7 +13,7 @@
 // });
 
 const express = require('express');
-const myData = require('./data');
+const Data = require('./data');
 const app = express();
 const port = 3000;
 
@@ -24,11 +24,11 @@ app.get('/', (req, res) => {
 });
 
 app.get('/users', (req,res) => {
-    res.send('data.users');
+    res.send(data.users);
 });
 
 app.get('/schedules', (req,res) => {
-    res.send('data.schedules');
+    res.send(data.schedules);
 });
 
 const server=app.listen(3000, function() {} );
