@@ -33,5 +33,7 @@ app.get('/schedules', (req,res) => {
    
 });
 
+$> curl http://localhost:3000/users
+
 const server=app.listen(3000, function() {} );
 
