@@ -35,15 +35,14 @@ app.get('/schedules', (req,res) => {
 
 // $> curl http://localhost:3000/users
 
-app.get('/users/:user_id', (req,res) => {
+app.get('/users/:id', (req,res) => {
     
-    let user_id = req.params.user_id;
-    
-    if (data.users[user_id]) {
-      res.json(data.users[user_id]);
-    } else {
-      res.json("User doesn't exist");
-    }
+    let id = req.params.id;
+  if (data.users[id]) {
+    res.json(data.users[id]);
+  } else {
+    res.json("User doesn't exist");
+  }
 
 
     // res.send(req.params.user_id);
