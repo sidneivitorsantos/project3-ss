@@ -33,7 +33,27 @@ app.get('/schedules', (req,res) => {
    
 });
 
-$> curl http://localhost:3000/users
+// $> curl http://localhost:3000/users
+
+app.get('/users/:user_id', (req,res) => {
+    
+    let user_id = req.params.user_id;
+    
+    if (data.users[user_id]) {
+      res.json(data.users[user_id]);
+    } else {
+      res.json("User doesn't exist");
+    }
+
+
+    // res.send(req.params.user_id);
+    // console.log(id);
+
+
+   
+});
+
+app.get('users/:id/schedules', (req, res) => { });
 
 const server=app.listen(3000, function() {} );
 
