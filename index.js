@@ -14,8 +14,8 @@
 
 const express = require('express');
 const data = require('./data');
-const bodyParser = require('body-parser')
 const app = express();
+const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }))
 
 const port = 3000;
@@ -50,8 +50,6 @@ app.get('/users/:id', (req,res) => {
 
     // res.send(req.params.user_id);
     // console.log(id);
-
-
    
 });
 
