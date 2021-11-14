@@ -14,7 +14,10 @@
 
 const express = require('express');
 const data = require('./data');
+const bodyParser = require('body-parser')
 const app = express();
+app.use(bodyParser.urlencoded({ extended: false }))
+
 const port = 3000;
 
 app.get('/', (req, res) => {
@@ -38,11 +41,11 @@ app.get('/schedules', (req,res) => {
 app.get('/users/:id', (req,res) => {
     
     let id = req.params.id;
-  if (data.users[id]) {
-    res.json(data.users[id]);
-  } else {
-    res.json("User doesn't exist");
-  }
+      if (data.users[id]) {
+        res.json(data.users[id]);
+      } else {
+        res.json("User doesn't exist");
+      }
 
 
     // res.send(req.params.user_id);
@@ -52,7 +55,32 @@ app.get('/users/:id', (req,res) => {
    
 });
 
-app.get('users/:id/schedules', (req, res) => { });
+app.get("/users/:userId/schedules", (req, res) => {
+  let userSchedules = data.schedules.filter((schedule) => {
+    return req.params.userId == schedule.user_id;
+  });
+  console.log(userSchedules);
+  res.send(userSchedules);
+});
+
+// app.get('users/:user_id/schedules', (req, res) => {
+
+//     let userSchedules = data.schedules.filter(()=>{
+//       return schedule.user_id == userId;
+     
+
+//     });
+//     console.log(userSchedules);
+//     // return req.params.userId == user_id;
+   
+
+//  });
+
+app.post('/users', urlencoded,  (req,res) => {
+  console.log(req.body);
+  res.send(data.users);
+ 
+});
 
 const server=app.listen(3000, function() {} );
 
