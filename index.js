@@ -38,9 +38,9 @@ app.get('/schedules', (req,res) => {
 
 // $> curl http://localhost:3000/users
 
-app.get('/users/:id', (req,res) => {
+app.get('/users/:user_id', (req,res) => {
     
-    let id = req.params.id;
+    let id = req.params.user_id;
       if (data.users[id]) {
         res.json(data.users[id]);
       } else {
@@ -74,8 +74,9 @@ app.get("/users/:userId/schedules", (req, res) => {
 
 //  });
 
-app.post('/users', urlencoded,  (req,res) => {
+app.post('/users', bodyParser.urlencoded({ extended: false }), (req,res) => {
   console.log(req.body);
+  console.log(req.body.firstName);
   res.send(data.users);
  
 });
