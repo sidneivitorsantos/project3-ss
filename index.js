@@ -1,22 +1,21 @@
-// const express = require('express');
-// const app = express();
-// const port = 3000;
-
-// app.get('/', (req, res) => {
-    
-//     res.send('Hello World');
-
-// });
-
-// app.listen(port, () => {
-//     console.log(`example app listening at http://localhost:${port});
-// });
-
 const express = require('express');
 const data = require('./data');
 const app = express();
-const bodyParser = require('body-parser')
-app.use(bodyParser.urlencoded({ extended: false }))
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
+
+//3b using handlebars
+
+//setting handlebars
+
+const handlebars = require('express-handlebars');
+
+// template engine
+
+app.engine('handlebars', handlebars({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+
+
 
 const port = 3000;
 
@@ -36,7 +35,6 @@ app.get('/schedules', (req,res) => {
    
 });
 
-// $> curl http://localhost:3000/users
 
 app.get('/users/:user_id', (req,res) => {
     
@@ -46,10 +44,6 @@ app.get('/users/:user_id', (req,res) => {
       } else {
         res.json("User doesn't exist");
       }
-
-
-    // res.send(req.params.user_id);
-    // console.log(id);
    
 });
 
@@ -61,20 +55,10 @@ app.get("/users/:userId/schedules", (req, res) => {
   res.send(userSchedules);
 });
 
-// app.get('users/:user_id/schedules', (req, res) => {
-
-//     let userSchedules = data.schedules.filter(()=>{
-//       return schedule.user_id == userId;
-     
-
-//     });
-//     console.log(userSchedules);
-//     // return req.params.userId == user_id;
-   
-
-//  });
 
 app.post('/users', bodyParser.urlencoded({ extended: false }), (req,res) => {
+
+  res.render('form');
   console.log(req.body);
   console.log(req.body.firstName);
   res.send(data.users);
