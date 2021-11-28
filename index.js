@@ -2,18 +2,15 @@ const express = require('express');
 const data = require('./data');
 const app = express();
 const bodyParser = require('body-parser');
+
 app.use(bodyParser.urlencoded({ extended: false }));
 
-//3b using handlebars
+// import express from 'express';
+const handlebars = require('express-handlebars').engine
 
-//setting handlebars
-
-const handlebars = require('express-handlebars');
-
-// template engine
-
-app.engine('handlebars', handlebars({defaultLayout: 'main'}));
+// app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
+app.set('views', './views');
 
 
 
@@ -56,9 +53,17 @@ app.get("/users/:userId/schedules", (req, res) => {
 });
 
 
+
+app.get("/form", (req,res) => {
+  res.send('New user form');
+  res.render('form');
+  
+ 
+});
+
 app.post('/users', bodyParser.urlencoded({ extended: false }), (req,res) => {
 
-  res.render('form');
+  
   console.log(req.body);
   console.log(req.body.firstName);
   res.send(data.users);
