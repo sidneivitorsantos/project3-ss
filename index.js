@@ -2,10 +2,10 @@ const express = require('express');
 const data = require('./data');
 const app = express();
 const bodyParser = require('body-parser');
-
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // import express from 'express';
+// import { engine } from 'express-handlebars';
 const handlebars = require('express-handlebars').engine
 
 // app.engine('handlebars', engine());
@@ -55,7 +55,7 @@ app.get("/users/:userId/schedules", (req, res) => {
 
 
 app.get("/form", (req,res) => {
-  res.send('New user form');
+  // res.send('New user form');
   res.render('form');
   
  
