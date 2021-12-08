@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // import { engine } from 'express-handlebars';
 const handlebars = require('express-handlebars').engine
 
-// app.engine('handlebars', engine());
+app.engine('handlebars', handlebars());
 app.set('view engine', 'handlebars');
 app.set('views', './views');
 
