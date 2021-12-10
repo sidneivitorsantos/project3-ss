@@ -3,6 +3,7 @@ const data = require('./data');
 const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // import express from 'express';
 // import { engine } from 'express-handlebars';
@@ -61,12 +62,32 @@ app.get("/form", (req,res) => {
  
 });
 
-app.post('/users', bodyParser.urlencoded({ extended: false }), (req,res) => {
+app.post('/users/new', bodyParser.urlencoded({ extended: false }), (req,res) => {
+
+  const newUser = {
+    firstname:req.body.firstname, 
+    lastname:req.body.lastname,
+    email:req.body.email,
+    password: req.body.password
+  }
+  
+  console.log("newUser", newUser);
+  data.users.push (newUser);
+  
+  console.log(req.body);
+  console.log(req.body.firstname);
+  res.redirect('/users');
+  // res.send('User registered');
+  // req.body.name;
+ 
+});
+
+app.post('/schedules/new', bodyParser.urlencoded({ extended: false }), (req,res) => {
 
   
   console.log(req.body);
   console.log(req.body.firstName);
-  res.send(data.users);
+  res.send('Schedule registered');
  
 });
 
